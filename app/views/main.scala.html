@@ -61,16 +61,13 @@
                 //outline the anchors that have pjax enabled
                 //$('a[data-pjax]').css("border", "3px double red");
 
-                //link the items to pjax
+                //link the items to pjax - uncomment and comment alternative to enable this one
                 //$('a[data-pjax]').pjax();
 
                 //alternative 1
-                $('.js-pjax').css("border", "3px double red");
                 $('.js-pjax').pjax('#contentArea', { timeout: null, error: function(xhr, err){
                     alert('Something went wrong: ' + err)
                 }});
-
-                //alternative 2
 
             });
         </script>
