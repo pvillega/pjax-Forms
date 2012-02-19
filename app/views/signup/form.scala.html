@@ -1,4 +1,4 @@
-@(signupForm: Form[User])
+@(signupForm: Form[User])(implicit request: play.api.mvc.Request[AnyContent])
 
 @import helper._
 @import helper.twitterBootstrap._

@@ -1,4 +1,4 @@
-@(contactForm: Form[Contact])
+@(contactForm: Form[Contact])(implicit request: play.api.mvc.Request[AnyContent])
 
 @import helper._
 @import helper.twitterBootstrap._

@@ -65,14 +65,14 @@ object SignUp extends Controller {
   /**
    * Display an empty form.
    */
-  def form = Action {
+  def form = Action { implicit request =>
     Ok(html.signup.form(signupForm));
   }
   
   /**
    * Display a form pre-filled with an existing User.
    */
-  def editForm = Action {
+  def editForm = Action { implicit request =>
     val existingUser = User(
       "fakeuser", "secret", "fake@gmail.com", 
       UserProfile("France", None, Some(30))

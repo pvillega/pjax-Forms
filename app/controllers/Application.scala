@@ -7,7 +7,7 @@ import views._
 
 object Application extends Controller {
   
-  def index = Action {
+  def index = Action { implicit request =>
     Ok(html.index());
   }
   

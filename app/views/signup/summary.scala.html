@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User)(implicit request: play.api.mvc.Request[AnyContent])
 
 @main(Html("Account created!"), nav = "signup") {
     

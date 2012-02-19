@@ -40,14 +40,14 @@ object Contacts extends Controller {
   /**
    * Display an empty form.
    */
-  def form = Action {
+  def form = Action { implicit request =>
     Ok(html.contact.form(contactForm));
   }
   
   /**
    * Display a form pre-filled with an existing Contact.
    */
-  def editForm = Action {
+  def editForm = Action { implicit request =>
     val existingContact = Contact(
       "Fake", "Contact", Some("Fake company"), informations = List(
         ContactInformation(
