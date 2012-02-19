@@ -1,7 +1,10 @@
 @(user: User)(implicit request: play.api.mvc.Request[AnyContent])
 
 @main(Html("Account created!"), nav = "signup") {
-    
+    <div class="page-header">
+        <h1>Account created!</h1>
+    </div>
+
     <h2>Your account:</h2>
     
     <h6>Username</h6>

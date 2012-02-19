@@ -4,11 +4,14 @@
 @import helper.twitterBootstrap._
 
 @title = {
-    Sign Up <small><a href="@routes.SignUp.editForm">Or edit an existing user</a></small>
+    Sign Up <small><a class="js-pjax" data-pjax="#contentArea" href="@routes.SignUp.editForm">Or edit an existing user</a></small>
 }
 
-@main(title, nav = "signup") {
-    
+@main(Html("Sign Up"), nav = "signup") {
+    <div class="page-header">
+        <h1>@title</h1>
+    </div>
+
     @helper.form(action = routes.SignUp.submit) {
         
         <fieldset>

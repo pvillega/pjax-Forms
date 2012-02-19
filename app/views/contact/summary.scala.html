@@ -1,7 +1,10 @@
 @(contact: Contact)(implicit request: play.api.mvc.Request[AnyContent])
 
 @main(Html("Contact created!"), nav = "contact") {
-    
+    <div class="page-header">
+        <h1>Contact created!</h1>
+    </div>
+
     <h2>@contact.firstname @contact.lastname</h2>
     
     <h6>Company</h6>

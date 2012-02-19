@@ -4,7 +4,7 @@
 @import helper.twitterBootstrap._
 
 @title = {
-    Add a new contact <small><a href="@routes.Contacts.editForm">Or edit an existing contact</a></small>
+    Add a new contact <small><a class="js-pjax" data-pjax="#contentArea" href="@routes.Contacts.editForm">Or edit an existing contact</a></small>
 }
 
 @phoneField(field: Field, className: String = "phone") = {
@@ -56,8 +56,12 @@
     </div>
 }
 
-@main(title, nav = "contact") {
-    
+@main(Html("Add a new contact"), nav = "contact") {
+
+    <div class="page-header">
+        <h1>@title</h1>
+    </div>
+
     @if(contactForm.hasErrors) {
         <div class="alert-message error">
             <p><strong>Oops</strong> Please fix all errors</p>
