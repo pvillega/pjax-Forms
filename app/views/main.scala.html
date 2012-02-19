@@ -51,6 +51,15 @@
             </footer>
 
         </div>
+
+        @* Load and call pjax lib *@
+        <script src="@routes.Assets.at("javascripts/jquery.pjax.js")" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function(){
+                // pjax to affect only the links in the 'topbar' div (navigation), so we skip any other anchors (like the one in the footer)
+                $('ul a').pjax('.topbar')
+            })
+        </script>
         
     </body>
 </html>
