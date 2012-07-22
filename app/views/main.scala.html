@@ -91,14 +91,18 @@
 
 
                     //below we have all Pjax events. They print a message on console to see the order
+
+                    //start and end are relevant for user feedback. On slow mobile networks the Pjax request may be slow
+                    //and if we don't give visual feedback (like a "loading" gif) the user may believe that the site is broken
                     $('#contentArea').on('pjax:start', function() { console.log("pjax:start"); });
                     $('#contentArea').on('pjax:end',   function() { console.log("pjax:end"); });
+
+                    //Other events
                     $('#contentArea').on('pjax:beforeSend',   function() { console.log("pjax:beforeSend"); });
                     $('#contentArea').on('pjax:complete',   function() { console.log("pjax:complete"); });
                     $('#contentArea').on('pjax:success',   function() { console.log("pjax:success"); });
                     $('#contentArea').on('pjax:error',   function() { console.log("pjax:error"); });
                     $('#contentArea').on('pjax:timeout',   function() { console.log("pjax:timeout"); });
-
                 }
             });
         </script>
