@@ -5,6 +5,8 @@
         <title>@title</title>
 
         @content
+
+        <script>console.log("pjax template loaded");</script>
 } else {
 @* normal request, not pjax *@
 <!DOCTYPE html>
@@ -57,18 +59,47 @@
         @* Load and call pjax lib *@
         <script src="@routes.Assets.at("javascripts/jquery.pjax.js")" type="text/javascript"></script>
         <script type="text/javascript">
+            //some logging to mark if we are in a pjax request or not in the JS console
+            console.log("normal request template loaded");
+
             $(function(){
-                //outline the anchors that have pjax enabled
-                //$('a[data-pjax]').css("border", "3px double red");
+                //we only set pjax if the browser supports it
+                if($.support.pjax) {
 
-                //link the items to pjax - uncomment and comment alternative to enable this one
-                //$('a[data-pjax]').pjax();
+                    //This code ensures that we won't use Pjax if the user has pressed a modifier key when clicking,
+                    //as some OS/browsers may have special behaviour linked to it
+                    $(document).on("click", "a.js-pjax", function(event) {
+                        if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
+                            event.preventDefault();
+                            //call pjax
+                            console.log("Ready to call Pjax");
+                            $.pjax({
+                                url: $(this).attr('href'),
+                                container: '#contentArea',
+                                timeout: null,
+                                error: function(xhr, err){
+                                    alert('Something went wrong: ' + err)
+                                }
+                            });
+                        } else {
+                            console.log("Modifier key pressed, no Pjax call executed");
+                        }
+                    });
 
-                //alternative 1
-                $('.js-pjax').pjax('#contentArea', { timeout: null, error: function(xhr, err){
-                    alert('Something went wrong: ' + err)
-                }});
+                    //uncomment to outline the anchors that have pjax enabled
+                    //$('.js-pjax]').css("border", "3px double red");
 
+
+                    //below we have all Pjax events. They print a message on console to see the order
+                    $('#contentArea').on('pjax:start', function() { console.log("pjax:start"); });
+                    $('#contentArea').on('pjax:end',   function() { console.log("pjax:end"); });
+                    $('#contentArea').on('pjax:beforeSend',   function() { console.log("pjax:beforeSend"); });
+                    $('#contentArea').on('pjax:complete',   function() { console.log("pjax:complete"); });
+                    $('#contentArea').on('pjax:success',   function() { console.log("pjax:success"); });
+                    $('#contentArea').on('pjax:error',   function() { console.log("pjax:error"); });
+                    $('#contentArea').on('pjax:timeout',   function() { console.log("pjax:timeout"); });
+
+                }
             });
         </script>
     </body>
