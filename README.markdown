@@ -1,10 +1,7 @@
-================================================================================
-P-JAX Integration in Play Framework 2.0 (Scala)
-================================================================================
+# P-JAX Integration in Play Framework 2.0 (Scala)
 
 
-What's this
-================================================================================
+## What's this
 
 This is a sample project that shows a possible way to integrate Pjax(https://github.com/defunkt/jquery-pjax) and Play 2.0.
 
@@ -13,24 +10,13 @@ Pjax is a jquery-based tool that loads HTML from the server into the current pag
 This project uses the Forms sample project from Play 2.0 (Scala) as scaffolding and integrates Pjax to test both how it could be done and how much does Pjax improve the speed of the application.
 
 
-This code can be improved...
-================================================================================
+## Any online demo?
 
-Yes, and I openly ask for pull request for any improvements. I'm no expert on Scala/Play 2.0 (yet! :P) and it is possible that PJax can be added to the framework using a less invasive way.
-
-If you know how, please let me know! All help is appreciated.
-
-
-Any online demo?
-================================================================================
-
-Yes, you can see this project running at:
-
-  http://pjaxforms.herokuapp.com/
+Yes, you can see this project running on [Heroku](http://pjaxforms.herokuapp.com/)
 
 Be aware it is running under a free dyno, so it may take a while to load the first time you access the application!
 
-Begin by ensuring that your browser is supported: http://caniuse.com/#search=pushstate
+Begin by ensuring that [your browser is supported](http://caniuse.com/#search=pushstate)
 
 The best way to compare the performance impact is to:
 
@@ -44,8 +30,7 @@ In my tests the main page (once the dyno is up) loads in around 1.5s while the p
 As you can see the difference is massive.
 
 
-What are the changes to the original project?
-================================================================================
+## What are the changes to the original project?
 
 The following changes have been done to the original Forms Sample project:
 
@@ -59,16 +44,28 @@ The reason behind the changes is that Pjax sends a specific header to identify a
 
 As Play 2.0 templates work as nested functions that call to each other, we can only do that check in the 'main.scala.html' template, where we can decide to add or not to add the layout to the Response. But to do this, 'main' requires access to the 'request' object, which is not available by default, so we have to pass it as an implicit parameter. And because 'main' is used by all the templates in the application, all of them need to provide that 'request' object, and in turn the controllers that call the views must provide it to the views. As you can see, a bit invasive. If you know of a better way, please tell! :)
 
-
 The changes to '@title' are specific to the way this application (Forms Sample) was behaving, by using the title to set some text in the body area which changes on each request. This has been done to keep the same layout as the original project.
 
 
+# Client Side Validation
 
-License (for those who need one)
-================================================================================
+This project has been extended with a sample on client-side validation
+
+The validation is provided by the [play-js-validation module](https://github.com/namin/play-js-validation)
+
+## Code changes
+
+Integrated client side validation in Play via [play-js-validation module](https://github.com/namin/play-js-validation)
+
+Currently this module has some dependencies: https://github.com/js-scala/js-scala and https://github.com/js-scala/build-play20 , so it can't be used in Heroku.
+
+Pending to see if it will be integrated in Play 2.1
+
+
+# License (for those who need one)
+
 Public Domain. Do whatever you want, at your own risk. No guarantees given.
 
-Happy?
 
 
 

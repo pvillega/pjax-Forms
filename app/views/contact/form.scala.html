@@ -1,4 +1,4 @@
-@(contactForm: Form[Contact])(implicit request: play.api.mvc.Request[AnyContent])
+@(js: String => String, contactForm: Form[Contact])(implicit request: play.api.mvc.Request[AnyContent])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -56,7 +56,8 @@
     </div>
 }
 
-@main(Html("Add a new contact"), nav = "contact") {
+@main(title, nav = "contact") {
+    <script>@Html(js("#contactForm"))</script>
 
     <div class="page-header">
         <h1>@title</h1>
@@ -68,7 +69,7 @@
         </div>
     }
     
-    @helper.form(action = routes.Contacts.submit) {
+    @helper.form(action = routes.Contacts.submit, args = 'id -> "contactForm") {
         
         <fieldset>
             <legend>General informations</legend>

@@ -18,6 +18,7 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+        <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery.validate.js")"></script>
     </head>
     <body>
         <div class="topbar">
@@ -30,6 +31,9 @@
                         </li>
                         <li class="@("active".when(nav == "contact"))">
                             <a class="js-pjax" data-pjax="#contentArea" href="@routes.Contacts.form">Contacts</a>
+                        </li>
+						<li class="@("active".when(nav == "comment"))">
+                            <a class="js-pjax" data-pjax="#contentArea" href="@routes.Comments.form">Comments</a>
                         </li>
                     </ul>
                 </div>
